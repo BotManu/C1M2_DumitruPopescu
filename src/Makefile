@@ -24,18 +24,21 @@
 include sources.mk
 
 # Platform Overrides
-PLATFORM = 
+PLATFORM = HOST
 
 # Architectures Specific Flags
-LINKER_FILE = 
-CPU = 
-ARCH = 
-SPECS = 
+# LINKER_FILE = 
+# CPU = 
+# ARCH = 
+# SPECS = 	
 
 # Compiler Flags and Defines
-CC = 
-LD = 
-LDFLAGS = 
-CFLAGS = 
-CPPFLAGs = 
+CC = gcc
+LD = ld
+# LDFLAGS = 
+CFLAGS = -Wall -Werror -g -O0 -std=c99
+CPPFLAGs = -D${PLATFORM}
 
+.PHONY: build
+build:
+	${CC} ${CPPFLAGs} ${CFLAGS} ${INCLUDES} -o main.out ${SOURCES}
